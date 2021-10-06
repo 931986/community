@@ -3,6 +3,7 @@ package com.example.spring_.commnity.Mapper;
 import com.example.spring_.commnity.Model.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.lang.annotation.*;
@@ -12,6 +13,8 @@ public interface UserMapper{
     Integer ID=2;
     @Insert("insert into USER (ACCOUNT_ID,NAME,TOKEN,GMT_CREATE,GMT_MODIFIED) values (#{accountId},#{name},#{Token},#{gmtCreate},#{gmtModified})")
      public void Insert(User user);
+    @Select("select * from USER where token=#{token}")
+    User findToken(@Param("token")String token);
 }
 //       String[] value();
 //

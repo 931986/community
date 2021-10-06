@@ -75,7 +75,6 @@ public class AuthorizeController {
 //            cookie在response里面
 //登录成功， 通过reques get到session 设置 session
             response.addCookie(new Cookie("token",token));
-            request.getSession().setAttribute("user",githubUser);
            return "redirect:/";
         }else{
             //            登录失败

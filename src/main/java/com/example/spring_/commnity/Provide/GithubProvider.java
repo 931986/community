@@ -23,6 +23,7 @@ public class GithubProvider {
     //连接超时为60s
     private static final long CONNECT_TIMEOUT = 60000;
 
+
     OkHttpClient.Builder builder = new OkHttpClient.Builder()
             .readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS)
             .writeTimeout(WRITE_TIMEOUT, TimeUnit.MILLISECONDS)
@@ -31,6 +32,8 @@ public class GithubProvider {
     public String getAccessToken(AccessTokenDTO accessTokenDTO){
 //第二步之后的数据处理 github post accesstoken
         MediaType mediaType = MediaType.get("application/json; charset=utf-8");
+        System.setProperty("sun.net.client.defaultConnectTimeout", String.valueOf(10000));// （单位：毫秒）
+        System.setProperty("sun.net.client.defaultReadTimeout", String.valueOf(10000)); // （单位：毫秒）
 
             OkHttpClient client = new OkHttpClient();
             RequestBody body = RequestBody.create(mediaType,JSON.toJSONString(accessTokenDTO));
@@ -69,6 +72,7 @@ public class GithubProvider {
 //                .url(https://api.github.com/user)
 //                 .header(Authorization,token +accessToken)
 //                .build();
+
             Request request = new Request.Builder()
                     .url("https://api.github.com/user")
                     .header("Authorization","token "+accessToken)
