@@ -14,6 +14,12 @@
 
 [visual paradigm](https://www.visual-paradigm.com)
 [okhttp便于get post请求](https://square.github.io/okhttp/)
+[spring-boot-mybatis](https://docs.spring.io/spring-boot/docs/2.2.0.RC1/reference/htmlsingle/#boot-features-embedded-database-support)
+[mybatis-spring-configure mapper](http://mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/)
+##github目前只支持令牌接入   https://yourtoken@github.com/931986/community.git
+##git remote set-url origin  https://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@github.com/931986/community.git
+##cookie保存登录状态
+
 ##授权github登录的参考站点
 [Github api doc]https://docs.github.com/cn/developers/apps/building-oauth-apps/creating-an-oauth-app
 ##过程
@@ -22,3 +28,32 @@
 ## 客户端回调redire-url
 ##客户端请求获取accessToken以及code
 ## 返回accessToken携带code
+
+####  表述关系图
+####   泛化关系  ->
+####   实现关系 --->
+####  聚合关系
+#### 组合关系 整体和部分 强依赖
+####  关联关系
+####  依赖关系
+####  实箭泛化虚实现
+## Mysql:  https://www.runoob.com/mysql/mysql-tutorial.html
+#### Database->table->recode
+#### crud
+#### sql命令
+
+```
+create table USER
+(
+ID INTEGER auto_increment,
+ACCOUNT_ID VARCHAR(100),
+NAME VARCHAR(50),
+TOKEN CHAR(50),
+GMT_CREATE BIGINT,
+GMT_MODIFIED BIGINT
+);
+```
+
+
+
+

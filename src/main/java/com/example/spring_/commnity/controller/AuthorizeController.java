@@ -1,8 +1,11 @@
 package com.example.spring_.commnity.controller;
 
+import com.example.spring_.commnity.Mapper.UserMapper;
+import com.example.spring_.commnity.Model.User;
 import com.example.spring_.commnity.Provide.GithubProvider;
 import com.example.spring_.commnity.dto.AccessTokenDTO;
 import com.example.spring_.commnity.dto.GithubUser;
+import jdk.jfr.Frequency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
 
 @Controller
 public class AuthorizeController {
@@ -24,6 +29,9 @@ public class AuthorizeController {
     private String client_secret;
     @Value("${github.redirect_url}")
     private  String redirect_url;
+    @Autowired
+//    实例化
+    private UserMapper userMapper;
 
 
 
@@ -33,7 +41,10 @@ public class AuthorizeController {
 
 
     public String callback(@RequestParam(name="code") String code,
-                           @RequestParam(name="state") String state){
+                           @RequestParam(name="state") String state,
+                           HttpServletRequest request
+
+    ) {
 //        accessToken=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
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
         accessTokenDTO.setCode(code);
@@ -41,13 +52,35 @@ public class AuthorizeController {
         accessTokenDTO.setRedirect_url(redirect_url);
         accessTokenDTO.setClient_id(client_id);
         accessTokenDTO.setClient_secret(client_secret);
-        String accessToken=githubProvider.getAccessToken(accessTokenDTO);
-        GithubUser user=githubProvider.getUser(accessToken);
-        System.out.println(user.getName());
-        System.out.println(user.getId());
-        System.out.println(user.getBio());
 
-        return "index";
+        String accessToken=githubProvider.getAccessToken(accessTokenDTO);
+
+        GithubUser githubUser=githubProvider.getUser(accessToken);
+        System.out.println(githubUser.getName());
+        System.out.println(githubUser.getId());
+        System.out.println(githubUser.getBio());
+        if(githubUser!=null){
+            User user = new User();
+            user.setToken(UUID.randomUUID().toString());
+            user.setAccountId(String.valueOf(githubUser.getId()));
+            user.setName(githubUser.getName());
+            user.setGmtCreate(System.currentTimeMillis());
+            user.setGmtModified(user.getGmtCreate());
+
+            userMapper.Insert(user);
+//登录成功， 通过reques get到session 设置 session
+            request.getSession().setAttribute("user",githubUser);
+           return "redirect:/";
+        }else{
+            //            登录失败
+            return "redirect:/";
+        }
+//
+//        sunyifan
+//        27120214
+//        Game Of Throne
+
+//        return "index";
 
 
     }

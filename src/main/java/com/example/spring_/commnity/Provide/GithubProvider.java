@@ -9,12 +9,25 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import static okhttp3.MediaType.*;
 
 @Component
 //ioc依赖注入获取对象
 public class GithubProvider {
+    //读取超时为60s
+    private static final long READ_TIMEOUT = 60000;
+    //写入超时为60s
+    private static final long WRITE_TIMEOUT = 60000;
+    //连接超时为60s
+    private static final long CONNECT_TIMEOUT = 60000;
+
+    OkHttpClient.Builder builder = new OkHttpClient.Builder()
+            .readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS)
+            .writeTimeout(WRITE_TIMEOUT, TimeUnit.MILLISECONDS)
+            .connectTimeout(CONNECT_TIMEOUT, TimeUnit.MILLISECONDS);
+
     public String getAccessToken(AccessTokenDTO accessTokenDTO){
 //第二步之后的数据处理 github post accesstoken
         MediaType mediaType = MediaType.get("application/json; charset=utf-8");
@@ -68,7 +81,7 @@ public class GithubProvider {
               GithubUser githubUser=JSON.parseObject(accessTokenString,GithubUser.class);
 //              String-> class
 //                access_token=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&scope=user&token_type=bearer
-
+//git remote set-url origin  https://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@github.com/931986/community.git
 
                 return githubUser;
             }catch(IOException e){
