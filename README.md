@@ -16,6 +16,8 @@
 [okhttp便于get post请求](https://square.github.io/okhttp/)
 [spring-boot-mybatis](https://docs.spring.io/spring-boot/docs/2.2.0.RC1/reference/htmlsingle/#boot-features-embedded-database-support)
 [mybatis-spring-configure mapper](http://mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/)
+[flyway] (https://flywaydb.org/documentation/getstarted/why)
+
 ##github目前只支持令牌接入   https://yourtoken@github.com/931986/community.git
 ##git remote set-url origin  https://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@github.com/931986/community.git
 ##cookie保存登录状态
