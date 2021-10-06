@@ -53,6 +53,7 @@ GMT_CREATE BIGINT,
 GMT_MODIFIED BIGINT
 );
 ```
+#### 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
 #### git push  time out 失败解决方案
 #### git config --global --unset http.proxy
 
