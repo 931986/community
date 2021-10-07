@@ -1,5 +1,8 @@
 package com.example.spring_.commnity.Model;
 
+import lombok.Data;
+
+@Data
 public class Question {
     private  Integer id;
     private  String title;
@@ -12,83 +15,83 @@ public class Question {
     private  Integer creator;
     private Integer comment_like;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public long getGmt_create() {
-        return gmt_create;
-    }
-
-    public void setGmt_create(long gmt_create) {
-        this.gmt_create = gmt_create;
-    }
-
-    public long getGmt_modified() {
-        return gmt_modified;
-    }
-
-    public void setGmt_modified(long gmt_modified) {
-        this.gmt_modified = gmt_modified;
-    }
-
-    public String getTags() {
-        return tags;
-    }
-
-    public void setTags(String tags) {
-        this.tags = tags;
-    }
-
-    public Integer getView_count() {
-        return view_count;
-    }
-
-    public void setView_count(Integer view_count) {
-        this.view_count = view_count;
-    }
-
-    public Integer getLike_count() {
-        return like_count;
-    }
-
-    public void setLike_count(Integer like_count) {
-        this.like_count = like_count;
-    }
-
-    public Integer getCreator() {
-        return creator;
-    }
-
-    public void setCreator(Integer creator) {
-        this.creator = creator;
-    }
-
-    public Integer getComment_like() {
-        return comment_like;
-    }
-
-    public void setComment_like(Integer comment_like) {
-        this.comment_like = comment_like;
-    }
+//    public Integer getId() {
+//        return id;
+//    }
+//
+//    public void setId(Integer id) {
+//        this.id = id;
+//    }
+//
+//    public String getTitle() {
+//        return title;
+//    }
+//
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
+//
+//    public String getDescription() {
+//        return description;
+//    }
+//
+//    public void setDescription(String description) {
+//        this.description = description;
+//    }
+//
+//    public long getGmt_create() {
+//        return gmt_create;
+//    }
+//
+//    public void setGmt_create(long gmt_create) {
+//        this.gmt_create = gmt_create;
+//    }
+//
+//    public long getGmt_modified() {
+//        return gmt_modified;
+//    }
+//
+//    public void setGmt_modified(long gmt_modified) {
+//        this.gmt_modified = gmt_modified;
+//    }
+//
+//    public String getTags() {
+//        return tags;
+//    }
+//
+//    public void setTags(String tags) {
+//        this.tags = tags;
+//    }
+//
+//    public Integer getView_count() {
+//        return view_count;
+//    }
+//
+//    public void setView_count(Integer view_count) {
+//        this.view_count = view_count;
+//    }
+//
+//    public Integer getLike_count() {
+//        return like_count;
+//    }
+//
+//    public void setLike_count(Integer like_count) {
+//        this.like_count = like_count;
+//    }
+//
+//    public Integer getCreator() {
+//        return creator;
+//    }
+//
+//    public void setCreator(Integer creator) {
+//        this.creator = creator;
+//    }
+//
+//    public Integer getComment_like() {
+//        return comment_like;
+//    }
+//
+//    public void setComment_like(Integer comment_like) {
+//        this.comment_like = comment_like;
+//    }
 }

@@ -11,10 +11,12 @@ import java.lang.annotation.*;
 @Mapper
 public interface UserMapper{
     Integer ID=2;
-    @Insert("insert into USER (ACCOUNT_ID,NAME,TOKEN,GMT_CREATE,GMT_MODIFIED) values (#{accountId},#{name},#{Token},#{gmtCreate},#{gmtModified})")
+    @Insert("insert into USER (ACCOUNT_ID,NAME,TOKEN,GMT_CREATE,GMT_MODIFIED,AVATAR_URL) values (#{accountId},#{name},#{Token},#{gmtCreate},#{gmtModified},#{avatarUrl})")
      public void Insert(User user);
     @Select("select * from USER where token=#{token}")
     User findToken(@Param("token")String token);
+    @Select("select * from USER where id=#{id}")
+    User findById(@Param("id") Integer id);
 }
 //       String[] value();
 //

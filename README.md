@@ -3,7 +3,7 @@
 
 ## 参考资料
 [Spring doc](https://spring.io)
-
+[thymeleaf前端渲染](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#parameterizable-fragment-signatures)
 [spring 初始化](https:spring.io/guides)
 
 [对比站点](https://elasticsearch.cn.explore)
@@ -17,7 +17,9 @@
 [spring-boot-mybatis](https://docs.spring.io/spring-boot/docs/2.2.0.RC1/reference/htmlsingle/#boot-features-embedded-database-support)
 [mybatis-spring-configure mapper](http://mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/)
 [flyway] (https://flywaydb.org/documentation/getstarted/why)
-
+## .sql  ; mvn flyway migration
+[lomebook](https://projectlombok.org/setup/maven)
+##@Data自动生产get,set
 ##github目前只支持令牌接入   https://yourtoken@github.com/931986/community.git
 ##git remote set-url origin  https://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@github.com/931986/community.git
 ##cookie保存登录状态
