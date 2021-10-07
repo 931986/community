@@ -45,7 +45,10 @@
             <ul class="nav navbar-nav navbar-right">
 <!--                没有服务器，用的localhost:3000-->
 <!--                <div th:text="${session.user}"></div>-->
-                <li class="dropdown" th:if="${session.user != null}">
+                <li>
+                    <a href="/publish">发布</a>
+                </li>
+                <li class="dropdown" th:if="${session.user.getId()!= 0}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false" th:text="${session.user.getName()}"> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -56,7 +59,7 @@
                         <li><a href="#">退出登录</a></li>
                     </ul>
                 </li>
-                <li th:if="${session.user == null}">
+                <li th:if="${session.user.getName()==null}">
                     <a href="https://github.com/login/oauth/authorize?client_id=59c366a2eedccae20e27&redirect_url=http://localhost:3000/callback&scope=user&state=1">登录</a>
 
                 </li>
@@ -74,20 +77,27 @@
 
             <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
             <hr>
-            <form action="">
+            <form action="publish" method="post">
             <div class="form-group">
                 <label for="title">问题标题（简单扼要）:</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="问题标题...">
+                <input type="text" class="form-control"  th:value="${title}" id="title" name="title" placeholder="问题标题...">
             </div>
                 <div class="form-group">
                     <label for="title">问题补充(必填):参考右侧提示</label>
-                    <textarea class="form-control" name="description" id="description" cols="30" rows="10"></textarea>
+                    <textarea class="form-control" th:value="${description}" name="description" id="description" cols="30" rows="10"></textarea>
                 </div>
+
                 <div class="form-group">
-                    <label for="title">添加标签:</label>
-                    <input type="text" class="form-control" id="tag" name="tag" placeholder="输入标签(,隔开)">
+                    <label for="tags">添加标签:</label>
+                    <input type="text" class="form-control" th:value="${tags}" id="tags" name="tags" placeholder="输入标签(,隔开)">
                 </div>
-                <button type="button" class="btn btn-success" style="float:right;margin-bottom: 15px">发布</button>
+<!--                <li th:if="${session.user == null}">-->
+                <div class="container-fluid  ">
+                    <div class="row">
+                <div class="alert alert-danger col-lg-9 col-md-12 col-sm-12 col-xs-12" th:if="${error!=null}"  th:text="${error}"></div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success col-lg-3 col-md-12 col-sm-12 col-xs-12" style="float:right;margin-bottom: 15px">发布</button>
 
             </form>
 

@@ -62,7 +62,7 @@ public class AuthorizeController {
         System.out.println(githubUser.getName());
         System.out.println(githubUser.getId());
         System.out.println(githubUser.getBio());
-        if(githubUser!=null){
+        if( githubUser!=null && githubUser.getId()!=null){
             User user = new User();
             String token=UUID.randomUUID().toString();
             user.setToken(token);
