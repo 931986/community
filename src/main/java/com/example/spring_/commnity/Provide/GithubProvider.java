@@ -35,12 +35,14 @@ public class GithubProvider {
         System.setProperty("sun.net.client.defaultConnectTimeout", String.valueOf(10000));// （单位：毫秒）
         System.setProperty("sun.net.client.defaultReadTimeout", String.valueOf(10000)); // （单位：毫秒）
 
+//        老版本
             OkHttpClient client = new OkHttpClient();
             RequestBody body = RequestBody.create(mediaType,JSON.toJSONString(accessTokenDTO));
 //            Request request = new Request.Builder()
 //                    .url("http://github.com/login/oauth/access_token")
 //                    .post(body)
 //                    .build();
+//        新版本
         MediaType mediaType_=MediaType.Companion.parse("application/json;charset=utf-8");
         RequestBody stringBody=RequestBody.Companion.create(JSON.toJSONString(accessTokenDTO),mediaType_);
         Request request=new Request

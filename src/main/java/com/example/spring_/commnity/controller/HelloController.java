@@ -4,6 +4,7 @@ import com.example.spring_.commnity.Mapper.UserMapper;
 import com.example.spring_.commnity.Mapper.questionMapper;
 import com.example.spring_.commnity.Model.Question;
 import com.example.spring_.commnity.Model.User;
+import com.example.spring_.commnity.dto.PaginationDTO;
 import com.example.spring_.commnity.dto.QuestionDTO;
 import com.example.spring_.commnity.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,11 @@ public class HelloController {
 //        return "index";
 //    }
     public String greeting(HttpServletRequest request,
-                           Model model
-    ) {
+                           Model model,
+                                       @RequestParam(name ="page",defaultValue = "1") Integer page,
+                                     @RequestParam(name ="size",defaultValue = "5") Integer  size
+
+                           ) {
 
         Cookie[] cookies=request.getCookies();
         if(cookies!=null && cookies.length!=0){
@@ -50,8 +54,12 @@ public class HelloController {
     }
     }
 
-        List<QuestionDTO> questionList=questionService.list();
-        model.addAttribute("questionList",questionList);
+        PaginationDTO pagination=questionService.list(page,size);
+//        for(QuestionDTO question:questionList){
+//            question.setDescription("change");
+//        }
+
+        model.addAttribute("pagination",pagination);
 
 
 
