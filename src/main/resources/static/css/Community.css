@@ -6,8 +6,23 @@
     width: 45px;
 
 }
+.main{
+    background-color: #e6e6e6;
+}
+.main_backgroud{
+   margin:30px;
+    background-color:white
+}
 .text_list{
     font-size: 12px;
     font-weight: normal;
     color: #999;
+}
+.profile .section{
+   margin-top: 15px;
+}
+
+.communityMenu{
+    color: #999;
+    font-size: 12px;
 }

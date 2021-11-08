@@ -55,5 +55,53 @@ public class QuestionService {
         return paginationDTO;
 
     }
+
+    public PaginationDTO list_(Integer userId, Integer page, Integer size) {
+        if(page<1){
+            page=1;
+        }
+        Integer totalCount=questionMapper_.countByUserId(userId);
+        Integer totalPage;
+     if(totalCount%size==0){
+            totalPage=totalCount/size;
+        }else{
+            totalPage=totalCount/size+1;
+        }
+        if(page>totalPage){
+            page=totalPage;
+        }
+
+        Integer offset=size*(page-1);
+        List<Question> questions=questionMapper_.list_(userId,offset,size);
+
+        PaginationDTO paginationDTO= new PaginationDTO();
+
+        List<QuestionDTO> questionDTOList=new ArrayList<>();
+        for( Question question : questions) {
+            User user = userMapper.findById(question.getCreator());
+            QuestionDTO questionDTO = new QuestionDTO();
+            BeanUtils.copyProperties(question, questionDTO);  // question装化成questionDTO
+            questionDTO.setUser(user);
+            questionDTOList.add(questionDTO);
+        }
+        paginationDTO.setQuestions(questionDTOList);
+
+        paginationDTO.setPagination(totalPage,page,size);
+
+
+        return paginationDTO;
+
+    }
+
+    public QuestionDTO getById(Integer id) {
+
+      Question question=questionMapper_.getById(id);
+      QuestionDTO questionDTO=new QuestionDTO();
+      BeanUtils.copyProperties(question,questionDTO);
+        User user = userMapper.findById(question.getCreator());
+        questionDTO.setUser(user);
+   return questionDTO;
+
+    }
 //    实现user 和question两张表关联
 }

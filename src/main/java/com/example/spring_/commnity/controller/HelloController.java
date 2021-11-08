@@ -55,9 +55,7 @@ public class HelloController {
     }
 
         PaginationDTO pagination=questionService.list(page,size);
-//        for(QuestionDTO question:questionList){
-//            question.setDescription("change");
-//        }
+
 
         model.addAttribute("pagination",pagination);
 
